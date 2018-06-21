@@ -2,24 +2,27 @@
 # Cookbook Name:: powercli_install
 # Spec:: default
 #
-# Copyright:: 2018, The Authors, All Rights Reserved.
-
-# The following are only examples, check out https://github.com/chef/inspec/tree/master/docs
-# for everything you can do.
+# Copyright:: 2018, JJ Asghar
 
 describe port(80) do
   it { should_not be_listening }
 end
 
 describe port(443) do
-  it { should be_listening }
-  its('protocols') { should include 'tcp' }
+  it { should_not be_listening }
 end
 
-describe sshd_config do
-  its('Ciphers') { should eq('chacha20-poly1305@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr') }
+if os[:family] == 'debian'
+  describe directory('/opt/microsoft/powershell') do
+    it { should exist }
+  end
+elsif os[:family] == 'redhat'
+  describe directory('/opt/microsoft/powershell') do
+    it { should exist }
+  end
 end
 
-describe yaml('.kitchen.yml') do
-  its('driver.name') { should eq('vagrant') }
+describe command('pwsh -Command "{& Get-InstalledModule -Name VMware.PowerCLI}"') do
+  its('exit_status') { should eq 0 }
+  its('stdout') { should_not be_empty }
 end

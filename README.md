@@ -1,43 +1,37 @@
 # powercli_install
 
-TODO: Enter one line description of the cookbook here.
+This will install PowerCLI on your system.
 
 ## SCOPE
 
-TODO: Enter a description of the scope of this cookbook, if you
-need an example the [mysql](https://github.com/chef-cookbooks/mysql) cookbook
-is a good place to start.
+This will install PowerCLI on your system, that's it ;).
 
 ## Requirements
 
-TODO: Enter any requirements for the coobook.
+- CentOS 7
+- RHEL 7
+- Ubuntu 16.04
 
 ## Dependancies
 
-TODO: Enter any other cookbooks or ruby libraries for this cookbook.
+- 'apt' cookbook
 
 ## Usage
 
-TODO: Enter specific useage instructions for this cookbook.
+Add the `powercli_install::default` recipe to your run list.
 
 ## Testing
 
-For more details look at the [TESTING.md](./TESTING.md).
-
-TODO: Enter any specific instructions for Testing this cookbook.
-
-## Resources
-
-TODO: Document any [Custom Resources](https://docs.chef.io/custom_resources.html) that this cookbook may provide.
+We have a `.kitchen.vcenter.yml` and `.kitchen.dokken.yml` file for testing.
 
 ## License & Authors
 
 If you would like to see the detailed LICENCE click [here](./LICENCE).
 
-- Author:: The Authors <you@example.com>
+- Author:: JJ Asghar <jj@chef.io>
 
 ```text
-Copyright:: The Authors
+Copyright:: JJ Asghar
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
