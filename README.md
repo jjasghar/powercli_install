@@ -11,10 +11,12 @@ This will install PowerCLI on your system, that's it ;).
 - CentOS 7
 - RHEL 7
 - Ubuntu 16.04
+- Windows (with powershell 5+)
 
 ## Dependancies
 
 - 'apt' cookbook
+- 'powershell' cookbook
 
 ## Usage
 
