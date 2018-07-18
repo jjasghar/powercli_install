@@ -101,4 +101,12 @@ when 'rhel'
     EOH
   end
 
+when 'windows'
+
+  include_recipe 'powershell::powershell5'
+
+  powershell_package 'Install PowerCLI' do
+    action :install
+    package_name %w(VMware.PowerCLI)
+  end
 end

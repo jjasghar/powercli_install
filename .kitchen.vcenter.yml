@@ -33,6 +33,16 @@ platforms:
         username: "root"
         password: admini
 
+  - name: windows2012r2
+    driver_config:
+      targethost: 172.16.20.43
+      template: windows2012R2-tmpl
+      datacenter: "Datacenter"
+    transport:
+        username: "Administrator"
+        password: Admini@
+
+
 suites:
   - name: default
     run_list:

@@ -12,17 +12,20 @@ describe port(443) do
   it { should_not be_listening }
 end
 
-if os[:family] == 'debian'
+if os.family == 'unix'
+  describe command('pwsh -Command "{& Get-InstalledModule -Name VMware.PowerCLI}"') do
+    its('exit_status') { should eq 0 }
+    its('stdout') { should_not be_empty }
+  end
   describe directory('/opt/microsoft/powershell') do
     it { should exist }
   end
-elsif os[:family] == 'redhat'
-  describe directory('/opt/microsoft/powershell') do
-    it { should exist }
+elsif os.family == 'windows'
+  describe command('$psversiontable.psversion') do
+    its('exit_status') { should eq 0 }
   end
-end
-
-describe command('pwsh -Command "{& Get-InstalledModule -Name VMware.PowerCLI}"') do
-  its('exit_status') { should eq 0 }
-  its('stdout') { should_not be_empty }
+     describe command('Get-InstalledModule -Name VMware.PowerCLI') do
+    its('exit_status') { should eq 0 }
+    its('stdout') { should_not be_empty }
+  end
 end
