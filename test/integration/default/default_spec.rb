@@ -12,7 +12,7 @@ describe port(443) do
   it { should_not be_listening }
 end
 
-if os.family == 'unix'
+if os.family == 'linux'
   describe command('pwsh -Command "{& Get-InstalledModule -Name VMware.PowerCLI}"') do
     its('exit_status') { should eq 0 }
     its('stdout') { should_not be_empty }
